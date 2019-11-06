@@ -17,7 +17,7 @@ public class SegundoProyectoAnálisis {
         public static Ensamblaje ensamblaje = new Ensamblaje(25500,240);
         
         public static void main(String[] args) {
-                ensamblaje.crearTareas(20);
+                ensamblaje.crearTareas(1200);
                 ensamblaje.imprimir();
                 //ensamblaje.imprimirAllPre();
         }

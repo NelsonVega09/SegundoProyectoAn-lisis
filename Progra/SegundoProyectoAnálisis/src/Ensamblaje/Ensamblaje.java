@@ -20,7 +20,6 @@ public class Ensamblaje {
                 this.tiempoCiclo = this.tiempoDiario/this.tareasDiarias;
         }
         
-        
         /*
         Método que se encarga de crear las tareas y agregarlas a la lista de ensamblaje
         */        
@@ -53,6 +52,7 @@ public class Ensamblaje {
                                 
                         }else{
                                 //System.out.println(nombre+" -----------------------");
+                                
                                 buscarPrecedentes();
                                 preced.addAll(precedentes);
                                 allPreced.addAll(allPrecedentes);
@@ -75,8 +75,8 @@ public class Ensamblaje {
                         boolean is = true;
                         //System.out.println("R "+p);
                         //System.out.println(posiblesPrecedentes.size());
-                        for(int k=0 ; k<getTarea(posiblesPrecedentes.get(p)).getAllPrecedentes().size() ; k++){
-                                if(allPrecedentes.contains(getTarea(posiblesPrecedentes.get(p)).getAllPrecedentes().get(k))){
+                        for(int k=0 ; k<getTarea(posiblesPrecedentes.get(p)).getAllPrecedentes().size() ; k++){                        
+                                if(precedentes.contains(getTarea(posiblesPrecedentes.get(p)).getAllPrecedentes().get(k))){
                                         is = false;
                                         break;
                                 }
@@ -105,11 +105,12 @@ public class Ensamblaje {
         Método que elimina los precedentes que no se pueden utilizar
         */
         public static void eliminaPosibles(Tarea tarea){
-                for(int i=0 ; i<tarea.getAllPrecedentes().size(); i++){
+                for(int i=0 ; i< tarea.getAllPrecedentes().size(); i++ ){
                         if(posiblesPrecedentes.contains(tarea.getAllPrecedentes().get(i))){
                                 posiblesPrecedentes.remove(tarea.getAllPrecedentes().get(i));
                         }
                 }
+                //System.out.println(posiblesPrecedentes.size());
         }
         
         
