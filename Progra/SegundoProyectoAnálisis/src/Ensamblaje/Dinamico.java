@@ -1,14 +1,23 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package Ensamblaje;
 
-/**
- *
- * @author DELL
- */
+import Tarea.Tarea;
+import java.util.ArrayList;
+
+
 public class Dinamico {
+        
+        
+        public void lineaEnsamblajeDinamica(Ensamblaje ensamblaje){
+                int estacion = 1;
+                int tiempo = ensamblaje.getTiempoCiclo();
+                ArrayList<Tarea> linea = ensamblaje.getLineaEnsamblaje();
+                
+                for(int i=0 ; i<linea.size() ; i++){
+                        if(tiempo >= linea.get(i).getTiempo()){
+                                
+                        }
+                }
+        }
         
 }

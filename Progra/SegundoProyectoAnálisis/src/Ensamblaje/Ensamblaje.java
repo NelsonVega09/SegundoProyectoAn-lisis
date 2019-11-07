@@ -145,7 +145,6 @@ public class Ensamblaje {
     /*
     Método para buscar una tarea en la lista ensamblaje
     */
-
     public Tarea getTarea(String nombre){
             for(int i=0 ; i<ensamblaje.size() ; i++){
                     if(ensamblaje.get(i).getNombre() == nombre){
@@ -155,6 +154,27 @@ public class Ensamblaje {
             return null;
     }
 
+    /*
+    Método que devuelve la cantidad de estaciones de la linea de ensamblaje
+    */
+    public int getCantEstaciones(){
+            return this.cantEstaciones;
+    }
+    
+    /*
+    Método que devuelve el tiempo de ciclo de la linea de ensamblaje
+    */
+    public int getTiempoCiclo(){
+            return this.tiempoCiclo;
+    }
+    
+    /*
+    Método que retorna la linea de ensamblaje
+    */
+    public ArrayList<Tarea> getLineaEnsamblaje(){
+            return this.ensamblaje;
+    }
+    
     /*
     Método para imprimir todas las tareas de la lista ensamblaje
     */

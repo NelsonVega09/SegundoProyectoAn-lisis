@@ -9,6 +9,8 @@ public class Tarea {
     private boolean ultimo;
     private ArrayList<String> precedentes;
     private final ArrayList<String> allPrecedentes;
+    private boolean isEstacion = false;
+    private String estacion = "";
 
         public Tarea(String nombre, int tiempo, ArrayList<String> precedentes,ArrayList<String> allPrecedentes) {
                 this.nombre = nombre;
@@ -47,5 +49,21 @@ public class Tarea {
         public void setUltimo(boolean ultimo) {
                 this.ultimo = ultimo;
         }
+
+        public boolean isIsEstacion() {
+                return isEstacion;
+        }
+
+        public void setIsEstacion(boolean isEstacion) {
+                this.isEstacion = isEstacion;
+        }
+
+        public String getEstacion() {
+                return estacion;
+        }
+
+        public void setEstacion(String estacion) {
+                this.estacion = estacion;
+        }      
         
 }
