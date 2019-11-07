@@ -4,11 +4,11 @@ import java.util.ArrayList;
 
 
 public class Tarea {
-    final String nombre;
-    final int tiempo;
-    boolean ultimo;
-    ArrayList<String> precedentes;
-    final ArrayList<String> allPrecedentes;
+    private final String nombre;
+    private final int tiempo;
+    private boolean ultimo;
+    private ArrayList<String> precedentes;
+    private final ArrayList<String> allPrecedentes;
 
         public Tarea(String nombre, int tiempo, ArrayList<String> precedentes,ArrayList<String> allPrecedentes) {
                 this.nombre = nombre;
@@ -48,11 +48,4 @@ public class Tarea {
                 this.ultimo = ultimo;
         }
         
-        /*public void eliminaRepetidos(){
-                for(int i=0 ; i<allPrecedentes.size() ; i++){
-                        if(allPrecedentes.get(i)==null)
-                                return;
-                        if()
-                }
-        }*/
 }

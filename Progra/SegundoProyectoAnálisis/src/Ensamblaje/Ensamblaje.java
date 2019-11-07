@@ -5,14 +5,14 @@ import java.util.ArrayList;
 
 
 public class Ensamblaje {
-    static int tiempoDiario;
-    static int tareasDiarias;
-    static int tiempoCiclo;
-    static int cantEstaciones;
-    public static ArrayList<Tarea> ensamblaje = new ArrayList<>();
-    public static ArrayList<String> precedentes = new ArrayList<>();
-    static ArrayList<String> allPrecedentes = new ArrayList<>();
-    static ArrayList<String> posiblesPrecedentes = new ArrayList<>();
+    private int tiempoDiario;
+    private int tareasDiarias;
+    private int tiempoCiclo;
+    private int cantEstaciones;
+    private ArrayList<Tarea> ensamblaje = new ArrayList<>();
+    private ArrayList<String> precedentes = new ArrayList<>();
+    private ArrayList<String> allPrecedentes = new ArrayList<>();
+    private ArrayList<String> posiblesPrecedentes = new ArrayList<>();
 
     public Ensamblaje(int tiempoDiario, int tareasDiarias) {
         this.tiempoDiario = tiempoDiario;
@@ -21,6 +21,9 @@ public class Ensamblaje {
         
     }
 
+    /*
+    Método que permite insertar tareas en la linea de ensamblaje
+    */
     public void setToEnsamblaje(Tarea tarea) {
         ensamblaje.add(tarea);
     }
@@ -70,8 +73,8 @@ public class Ensamblaje {
     /*
     Método que permite buscar los precedentes de cada tarea 
     */
-    public static void buscarPrecedentes(){
-            for(int e=0 ; e<ensamblaje.size() ; e++){
+    public void buscarPrecedentes(){
+            for(int e=0 ; e < this.ensamblaje.size() ; e++){
                     posiblesPrecedentes.add(ensamblaje.get(e).getNombre());
             }
 
@@ -105,11 +108,10 @@ public class Ensamblaje {
             }
     }
 
-
     /*
     Método que elimina los precedentes que no se pueden utilizar
     */
-    public static void eliminaPosibles(Tarea tarea){
+    public void eliminaPosibles(Tarea tarea){
             for(int i=0 ; i< tarea.getAllPrecedentes().size(); i++ ){
                     if(posiblesPrecedentes.contains(tarea.getAllPrecedentes().get(i))){
                             posiblesPrecedentes.remove(tarea.getAllPrecedentes().get(i));
@@ -117,7 +119,6 @@ public class Ensamblaje {
             }
             //System.out.println(posiblesPrecedentes.size());
     }
-
 
     /*
     Método para determinar las cantidad de estaciones que posee una linea de ensamblaje
@@ -129,16 +130,13 @@ public class Ensamblaje {
                     tiempoTotal += ensamblaje.get(i).getTiempo();
             }
 
-            cantEstaciones = tiempoTotal / tiempoCiclo;
-            System.out.println("Ciclo: "+tiempoCiclo+"  ");
+            this.cantEstaciones = tiempoTotal / tiempoCiclo;
     }
-
-
 
     /*
     Método para vaciar las lisatas y evitar guardar basura
     */
-    public static void limpiarListas(){
+    public void limpiarListas(){
             precedentes.clear();
             posiblesPrecedentes.clear();
             allPrecedentes.clear();
@@ -148,7 +146,7 @@ public class Ensamblaje {
     Método para buscar una tarea en la lista ensamblaje
     */
 
-    public static Tarea getTarea(String nombre){
+    public Tarea getTarea(String nombre){
             for(int i=0 ; i<ensamblaje.size() ; i++){
                     if(ensamblaje.get(i).getNombre() == nombre){
                             return ensamblaje.get(i); 
@@ -157,12 +155,12 @@ public class Ensamblaje {
             return null;
     }
 
-
     /*
     Método para imprimir todas las tareas de la lista ensamblaje
     */
     public void imprimir(){
-            System.out.println("------- TIEMPO DE CICLO: "+tiempoCiclo +"    ---     CANTIDAD ESTACIONES: "+cantEstaciones);
+            System.out.println("------- TIEMPO TRABAJO DIARIO: "+tiempoDiario +"    ---     TRABAJO DIARIO: "+tareasDiarias+
+                                            "   ------- TIEMPO DE CICLO: "+tiempoCiclo +"    ---     CANTIDAD ESTACIONES: "+cantEstaciones);
             for(int i=0 ; i<ensamblaje.size() ; i++){
                     String preced = "";
                     for(int e=0 ; e<ensamblaje.get(i).getPrecedentes().size() ; e++){
