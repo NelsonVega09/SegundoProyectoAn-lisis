@@ -22,8 +22,10 @@ public class SegundoProyectoAnálisis {
     public static Ensamblaje ensamblaje4 = new Ensamblaje(28800,240);
     public static Ensamblaje ensamblaje5 = new Ensamblaje(36000,280);
     public static Ensamblaje ensamblaje6 = new Ensamblaje(43200,300);
+    
 
     public static void main(String[] args) {
+        System.out.println("Hola Bello");
         ensamblaje5.crearTareas(600);
         ensamblaje6.crearTareas(1200);
         crearEnsamblaje3();
