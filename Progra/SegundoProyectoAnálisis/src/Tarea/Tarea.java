@@ -7,7 +7,7 @@ public class Tarea {
     final String nombre;
     final int tiempo;
     boolean ultimo;
-    final ArrayList<String> precedentes;
+    ArrayList<String> precedentes;
     final ArrayList<String> allPrecedentes;
 
         public Tarea(String nombre, int tiempo, ArrayList<String> precedentes,ArrayList<String> allPrecedentes) {
@@ -18,6 +18,12 @@ public class Tarea {
                 this.allPrecedentes = allPrecedentes;
         }
 
+    public void setToPrecedentes(String precedente) {
+        this.precedentes.add(precedente);
+    }
+
+        
+        
         public String getNombre() {
                 return nombre;
         }
