@@ -13,12 +13,12 @@ public class Ensamblaje {
     private ArrayList<String> precedentes = new ArrayList<>();
     private ArrayList<String> allPrecedentes = new ArrayList<>();
     private ArrayList<String> posiblesPrecedentes = new ArrayList<>();
+    private ArrayList<Estacion> estaciones = new ArrayList<>();
 
     public Ensamblaje(int tiempoDiario, int tareasDiarias) {
         this.tiempoDiario = tiempoDiario;
         this.tareasDiarias = tareasDiarias;
-        this.tiempoCiclo = tiempoDiario/tareasDiarias;
-        
+        this.tiempoCiclo = tiempoDiario/tareasDiarias;        
     }
 
     /*
@@ -129,8 +129,11 @@ public class Ensamblaje {
             for (int i=0 ; i<ensamblaje.size() ; i++){
                     tiempoTotal += ensamblaje.get(i).getTiempo();
             }
-
-            this.cantEstaciones = tiempoTotal / tiempoCiclo;
+           this.cantEstaciones = (
+                   tiempoTotal / tiempoCiclo)+1;
+            for(int i=0; i<this.cantEstaciones ; i++){
+                    estaciones.add(new Estacion("Estacion"+String.valueOf(i+1),this.tiempoCiclo));
+            }
     }
 
     /*
@@ -189,4 +192,34 @@ public class Ensamblaje {
                     System.out.println(ensamblaje.get(i).getNombre()+"    "+ensamblaje.get(i).getTiempo()+"    "+preced);
             }
     }
+    
+    /*
+    Método para imprimir las estaciones y sus tares.
+    */
+    public void imprimirEstaciones(){
+            for(int i=0 ; i<this.estaciones.size() ; i++){
+                    System.out.println("\n\n------------------- "+this.estaciones.get(i).getNombre()+" ------------------- "+this.estaciones.get(i).getTiempoSobrante() + "-------------------");
+                    for(int e=0 ; e<this.ensamblaje.size() ; e++){
+                            if(this.estaciones.get(i).getNombre()==this.ensamblaje.get(e).getEstacion())
+                                    System.out.println(this.ensamblaje.get(e).getNombre());
+                    }
+            }
+    }
+    
+    public boolean allUsed(){
+            for(int i=0 ; i<ensamblaje.size() ; i++)
+                    if(!ensamblaje.get(i).isIsEstacion())
+                            return false;            
+            return true;
+    }
+
+        public ArrayList<Estacion> getEstaciones() {
+                return estaciones;
+        }
+
+        public void setEstaciones(ArrayList<Estacion> estaciones) {
+                this.estaciones = estaciones;
+        }
+    
+    
 }

@@ -20,12 +20,10 @@ public class Tarea {
                 this.allPrecedentes = allPrecedentes;
         }
 
-    public void setToPrecedentes(String precedente) {
+        public void setToPrecedentes(String precedente) {
         this.precedentes.add(precedente);
     }
-
-        
-        
+              
         public String getNombre() {
                 return nombre;
         }
@@ -65,5 +63,5 @@ public class Tarea {
         public void setEstacion(String estacion) {
                 this.estacion = estacion;
         }      
-        
+                
 }

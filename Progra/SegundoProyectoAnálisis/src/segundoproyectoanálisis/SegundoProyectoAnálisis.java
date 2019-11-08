@@ -6,6 +6,7 @@
  */
 package segundoproyectoanálisis;
 
+import Ensamblaje.Dinamico;
 import Ensamblaje.Ensamblaje;
 import Tarea.Tarea;
 import java.util.ArrayList;
@@ -22,40 +23,43 @@ public class SegundoProyectoAnálisis {
     public static Ensamblaje ensamblaje4 = new Ensamblaje(28800,240);
     public static Ensamblaje ensamblaje5 = new Ensamblaje(36000,280);
     public static Ensamblaje ensamblaje6 = new Ensamblaje(43200,300);
+    public static Dinamico dinamico1 = new Dinamico(ensamblaje1);
     
 
     public static void main(String[] args) {
         
         crearEnsamblaje1();
         ensamblaje1.cantidadEstaciones();
+        dinamico1.lineaEnsamblajeDinamica();
         
         crearEnsamblaje2();
         ensamblaje2.cantidadEstaciones();
         
-        crearEnsamblaje3();
-        ensamblaje3.cantidadEstaciones();
+        //crearEnsamblaje3();
+        //ensamblaje3.cantidadEstaciones();
         
-        crearEnsamblaje4();
-        ensamblaje4.cantidadEstaciones();
+        //crearEnsamblaje4();
+        //ensamblaje4.cantidadEstaciones();
         
-        ensamblaje5.crearTareas(120);
-        ensamblaje5.cantidadEstaciones();
+        //ensamblaje5.crearTareas(120);
+        //ensamblaje5.cantidadEstaciones();
        
-        ensamblaje6.crearTareas(1200);
-        ensamblaje6.cantidadEstaciones();
+        //ensamblaje6.crearTareas(1200);
+        //ensamblaje6.cantidadEstaciones();
         
         System.out.println("\n\n------------------------------      10 TAREAS      ------------------------------------");
         ensamblaje1.imprimir();
-        System.out.println("\n\n------------------------------      20 TAREAS      ------------------------------------");
-        ensamblaje2.imprimir();
-        System.out.println("\n\n------------------------------      30 TAREAS      ------------------------------------");
-        ensamblaje3.imprimir();
-        System.out.println("\n\n------------------------------      60 TAREAS      ------------------------------------");
-        ensamblaje4.imprimir();
-        System.out.println("\n\n------------------------------      120 TAREAS      -----------------------------------");
-        ensamblaje5.imprimir();
-        System.out.println("\n\n-----------------------------      1200 TAREAS      -----------------------------------");
-        ensamblaje6.imprimir();
+        ensamblaje1.imprimirEstaciones();
+        //System.out.println("\n\n------------------------------      20 TAREAS      ------------------------------------");
+        //ensamblaje2.imprimir();
+        //System.out.println("\n\n------------------------------      30 TAREAS      ------------------------------------");
+        //ensamblaje3.imprimir();
+        //System.out.println("\n\n------------------------------      60 TAREAS      ------------------------------------");
+        //ensamblaje4.imprimir();
+        //System.out.println("\n\n------------------------------      120 TAREAS      -----------------------------------");
+        //ensamblaje5.imprimir();
+        //System.out.println("\n\n-----------------------------      1200 TAREAS      -----------------------------------");
+        //ensamblaje6.imprimir();
         
     }
 
@@ -74,10 +78,10 @@ public class SegundoProyectoAnálisis {
         Tarea tarea1 = new Tarea("Tarea1",30,precedentes1,null);
         Tarea tarea2 = new Tarea("Tarea2",20,precedentes2,null);
         Tarea tarea3 = new Tarea("Tarea3",15,precedentes3,null);
-        Tarea tarea4 = new Tarea("Tarea4",60,precedentes4,null);
-        Tarea tarea5 = new Tarea("Tarea5",70,precedentes5,null);
+        Tarea tarea4 = new Tarea("Tarea4",40,precedentes4,null);
+        Tarea tarea5 = new Tarea("Tarea5",25,precedentes5,null);
         Tarea tarea6 = new Tarea("Tarea6",30,precedentes6,null);
-        Tarea tarea7 = new Tarea("Tarea7",20,precedentes7,null);
+        Tarea tarea7 = new Tarea("Tarea7",15,precedentes7,null);
         Tarea tarea8 = new Tarea("Tarea8",10,precedentes8,null);
         Tarea tarea9 = new Tarea("Tarea9",5,precedentes9,null);
         Tarea tarea10 = new Tarea("Tarea10",23,precedentes10,null);
