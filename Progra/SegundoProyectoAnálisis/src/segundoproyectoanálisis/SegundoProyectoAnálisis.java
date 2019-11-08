@@ -24,7 +24,11 @@ public class SegundoProyectoAnálisis {
     public static Ensamblaje ensamblaje5 = new Ensamblaje(36000,280);
     public static Ensamblaje ensamblaje6 = new Ensamblaje(43200,300);
     public static Dinamico dinamico1 = new Dinamico(ensamblaje1);
-    
+    public static Dinamico dinamico2 = new Dinamico(ensamblaje2);
+    public static Dinamico dinamico3 = new Dinamico(ensamblaje3);
+    public static Dinamico dinamico4 = new Dinamico(ensamblaje4);
+    public static Dinamico dinamico5 = new Dinamico(ensamblaje5);
+    public static Dinamico dinamico6 = new Dinamico(ensamblaje6);
 
     public static void main(String[] args) {
         
@@ -34,12 +38,15 @@ public class SegundoProyectoAnálisis {
         
         crearEnsamblaje2();
         ensamblaje2.cantidadEstaciones();
+        dinamico2.lineaEnsamblajeDinamica();
         
-        //crearEnsamblaje3();
-        //ensamblaje3.cantidadEstaciones();
+        crearEnsamblaje3();
+        ensamblaje3.cantidadEstaciones();
+        dinamico3.lineaEnsamblajeDinamica();
         
-        //crearEnsamblaje4();
-        //ensamblaje4.cantidadEstaciones();
+        crearEnsamblaje4();
+        ensamblaje4.cantidadEstaciones();
+        dinamico4.lineaEnsamblajeDinamica();
         
         //ensamblaje5.crearTareas(120);
         //ensamblaje5.cantidadEstaciones();
@@ -50,12 +57,15 @@ public class SegundoProyectoAnálisis {
         System.out.println("\n\n------------------------------      10 TAREAS      ------------------------------------");
         ensamblaje1.imprimir();
         ensamblaje1.imprimirEstaciones();
-        //System.out.println("\n\n------------------------------      20 TAREAS      ------------------------------------");
-        //ensamblaje2.imprimir();
-        //System.out.println("\n\n------------------------------      30 TAREAS      ------------------------------------");
-        //ensamblaje3.imprimir();
-        //System.out.println("\n\n------------------------------      60 TAREAS      ------------------------------------");
-        //ensamblaje4.imprimir();
+        System.out.println("\n\n------------------------------      20 TAREAS      ------------------------------------");
+        ensamblaje2.imprimir();
+        ensamblaje2.imprimirEstaciones();
+        System.out.println("\n\n------------------------------      30 TAREAS      ------------------------------------");
+        ensamblaje3.imprimir();
+        ensamblaje3.imprimirEstaciones();
+        System.out.println("\n\n------------------------------      60 TAREAS      ------------------------------------");
+        ensamblaje4.imprimir();
+        ensamblaje4.imprimirEstaciones();
         //System.out.println("\n\n------------------------------      120 TAREAS      -----------------------------------");
         //ensamblaje5.imprimir();
         //System.out.println("\n\n-----------------------------      1200 TAREAS      -----------------------------------");
@@ -76,15 +86,15 @@ public class SegundoProyectoAnálisis {
         ArrayList<String> precedentes10 = new ArrayList();
 
         Tarea tarea1 = new Tarea("Tarea1",30,precedentes1,null);
-        Tarea tarea2 = new Tarea("Tarea2",20,precedentes2,null);
+        Tarea tarea2 = new Tarea("Tarea2",24,precedentes2,null);
         Tarea tarea3 = new Tarea("Tarea3",15,precedentes3,null);
         Tarea tarea4 = new Tarea("Tarea4",40,precedentes4,null);
         Tarea tarea5 = new Tarea("Tarea5",25,precedentes5,null);
         Tarea tarea6 = new Tarea("Tarea6",30,precedentes6,null);
         Tarea tarea7 = new Tarea("Tarea7",15,precedentes7,null);
         Tarea tarea8 = new Tarea("Tarea8",10,precedentes8,null);
-        Tarea tarea9 = new Tarea("Tarea9",5,precedentes9,null);
-        Tarea tarea10 = new Tarea("Tarea10",23,precedentes10,null);
+        Tarea tarea9 = new Tarea("Tarea9",49,precedentes9,null);
+        Tarea tarea10 = new Tarea("Tarea10",38,precedentes10,null);
 
         tarea2.setToPrecedentes("Tarea1");
         tarea3.setToPrecedentes("Tarea2");
@@ -138,7 +148,7 @@ public class SegundoProyectoAnálisis {
         Tarea tarea3 = new Tarea("Tarea3",25,precedentes3,null);
         Tarea tarea4 = new Tarea("Tarea4",15,precedentes4,null);
         Tarea tarea5 = new Tarea("Tarea5",30,precedentes5,null);
-        Tarea tarea6 = new Tarea("Tarea6",40,precedentes6,null);
+        Tarea tarea6 = new Tarea("Tarea6",31,precedentes6,null);
         Tarea tarea7 = new Tarea("Tarea7",15,precedentes7,null);
         Tarea tarea8 = new Tarea("Tarea8",10,precedentes8,null);
         Tarea tarea9 = new Tarea("Tarea9",19,precedentes9,null);
@@ -152,7 +162,7 @@ public class SegundoProyectoAnálisis {
         Tarea tarea17 = new Tarea("Tarea17",10,precedentes17,null);
         Tarea tarea18 = new Tarea("Tarea18",17,precedentes18,null);
         Tarea tarea19 = new Tarea("Tarea19",24,precedentes19,null);
-        Tarea tarea20 = new Tarea("Tarea20",50,precedentes20,null);
+        Tarea tarea20 = new Tarea("Tarea20",57,precedentes20,null);
 
         tarea2.setToPrecedentes("Tarea1");
         tarea3.setToPrecedentes("Tarea1");
@@ -240,31 +250,31 @@ public class SegundoProyectoAnálisis {
         Tarea tarea3 = new Tarea("Tarea3",25,precedentes3,null);
         Tarea tarea4 = new Tarea("Tarea4",15,precedentes4,null);
         Tarea tarea5 = new Tarea("Tarea5",30,precedentes5,null);
-        Tarea tarea6 = new Tarea("Tarea6",40,precedentes6,null);
+        Tarea tarea6 = new Tarea("Tarea6",30,precedentes6,null);
         Tarea tarea7 = new Tarea("Tarea7",15,precedentes7,null);
         Tarea tarea8 = new Tarea("Tarea8",10,precedentes8,null);
         Tarea tarea9 = new Tarea("Tarea9",19,precedentes9,null);
         Tarea tarea10 = new Tarea("Tarea10",32,precedentes10,null);
-        Tarea tarea11 = new Tarea("Tarea11",40,precedentes11,null);
+        Tarea tarea11 = new Tarea("Tarea11",12,precedentes11,null);
         Tarea tarea12 = new Tarea("Tarea12",23,precedentes12,null);
         Tarea tarea13 = new Tarea("Tarea13",27,precedentes13,null);
-        Tarea tarea14 = new Tarea("Tarea14",40,precedentes14,null);
+        Tarea tarea14 = new Tarea("Tarea14",32,precedentes14,null);
         Tarea tarea15 = new Tarea("Tarea15",35,precedentes15,null);
         Tarea tarea16 = new Tarea("Tarea16",20,precedentes16,null);
         Tarea tarea17 = new Tarea("Tarea17",10,precedentes17,null);
         Tarea tarea18 = new Tarea("Tarea18",17,precedentes18,null);
         Tarea tarea19 = new Tarea("Tarea19",24,precedentes19,null);
-        Tarea tarea20 = new Tarea("Tarea20",50,precedentes20,null);
+        Tarea tarea20 = new Tarea("Tarea20",39,precedentes20,null);
         Tarea tarea21 = new Tarea("Tarea21",40,precedentes21,null);
         Tarea tarea22 = new Tarea("Tarea22",23,precedentes22,null);
         Tarea tarea23 = new Tarea("Tarea23",27,precedentes23,null);
-        Tarea tarea24 = new Tarea("Tarea24",40,precedentes24,null);
+        Tarea tarea24 = new Tarea("Tarea24",35,precedentes24,null);
         Tarea tarea25 = new Tarea("Tarea25",35,precedentes25,null);
         Tarea tarea26 = new Tarea("Tarea26",20,precedentes26,null);
         Tarea tarea27 = new Tarea("Tarea27",10,precedentes27,null);
         Tarea tarea28 = new Tarea("Tarea28",17,precedentes28,null);
         Tarea tarea29 = new Tarea("Tarea29",24,precedentes29,null);
-        Tarea tarea30 = new Tarea("Tarea30",50,precedentes30,null);
+        Tarea tarea30 = new Tarea("Tarea30",62,precedentes30,null);
 
         tarea2.setToPrecedentes("Tarea1");
         tarea3.setToPrecedentes("Tarea2");
@@ -437,7 +447,7 @@ public class SegundoProyectoAnálisis {
         Tarea tarea37 = new Tarea("Tarea37",20,precedentes37,null);
         Tarea tarea38 = new Tarea("Tarea38",10,precedentes38,null);
         Tarea tarea39 = new Tarea("Tarea39",5,precedentes39,null);
-        Tarea tarea40 = new Tarea("Tarea40",23,precedentes40,null);
+        Tarea tarea40 = new Tarea("Tarea40",43,precedentes40,null);
         Tarea tarea41 = new Tarea("Tarea41",10,precedentes41,null);
         Tarea tarea42 = new Tarea("Tarea42",20,precedentes42,null);
         Tarea tarea43 = new Tarea("Tarea43",25,precedentes43,null);
@@ -457,7 +467,7 @@ public class SegundoProyectoAnálisis {
         Tarea tarea57 = new Tarea("Tarea57",10,precedentes57,null);
         Tarea tarea58 = new Tarea("Tarea58",17,precedentes58,null);
         Tarea tarea59 = new Tarea("Tarea59",24,precedentes59,null);
-        Tarea tarea60 = new Tarea("Tarea60",50,precedentes60,null);
+        Tarea tarea60 = new Tarea("Tarea60",75,precedentes60,null);
 
         tarea2.setToPrecedentes("Tarea1");
         tarea3.setToPrecedentes("Tarea2");

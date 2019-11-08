@@ -4,6 +4,7 @@ package Ensamblaje;
 import Tarea.Tarea;
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Collections;
 
 
 public class Dinamico {
@@ -26,20 +27,18 @@ public class Dinamico {
                 for(int e = 0 ; e < ensamblaje.getEstaciones().size() ; e++){
                         Estacion estacionT = ensamblaje.getEstaciones().get(e);
                         int tiempo = ensamblaje.getTiempoCiclo();
-                                
-                        for(int i=0 ; i < listaPosiblesTareas.size() ; i++){       
+                        int i=0;        
+                        while(i < listaPosiblesTareas.size()){       
                                 if(tiempo >= listaPosiblesTareas.get(i).getTiempo()){
                                         estacionT.setTarea(listaPosiblesTareas.get(i).getNombre());
                                         tiempo -= listaPosiblesTareas.get(i).getTiempo();
                                         listaPosiblesTareas.get(i).setIsEstacion(true);
                                         listaPosiblesTareas.get(i).setEstacion(estacionT.getNombre());
                                         listaPosiblesTareas.remove(i);
-                                        
-                                }
-                                
-                                if(listaPosiblesTareas.isEmpty()&&tiempo > 0){
                                         buscarPosibles();
-                                        i = -1;
+                                        i=0;
+                                }else{
+                                        i++;
                                 }
                                 
                         }
@@ -66,8 +65,9 @@ public class Dinamico {
                                 listaPosiblesTareas.add(listaTareas.get(i));
                         }
                 }
+                
                 listaPosiblesTareas.sort(Comparator.comparing(Tarea::getTiempo));
-                                
+                Collections.reverse(listaPosiblesTareas);
 
         }
         

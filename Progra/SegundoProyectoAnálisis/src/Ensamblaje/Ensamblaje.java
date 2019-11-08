@@ -199,9 +199,8 @@ public class Ensamblaje {
     public void imprimirEstaciones(){
             for(int i=0 ; i<this.estaciones.size() ; i++){
                     System.out.println("\n\n------------------- "+this.estaciones.get(i).getNombre()+" ------------------- "+this.estaciones.get(i).getTiempoSobrante() + "-------------------");
-                    for(int e=0 ; e<this.ensamblaje.size() ; e++){
-                            if(this.estaciones.get(i).getNombre()==this.ensamblaje.get(e).getEstacion())
-                                    System.out.println(this.ensamblaje.get(e).getNombre());
+                    for(int e=0 ; e<this.estaciones.get(i).getTareas().size() ; e++){
+                                    System.out.println(this.estaciones.get(i).getTareas().get(e));
                     }
             }
     }
