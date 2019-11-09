@@ -14,6 +14,7 @@ public class Ensamblaje {
     private ArrayList<String> allPrecedentes = new ArrayList<>();
     private ArrayList<String> posiblesPrecedentes = new ArrayList<>();
     private ArrayList<Estacion> estaciones = new ArrayList<>();
+    
 
     public Ensamblaje(int tiempoDiario, int tareasDiarias) {
         this.tiempoDiario = tiempoDiario;
@@ -181,44 +182,56 @@ public class Ensamblaje {
     /*
     Método para imprimir todas las tareas de la lista ensamblaje
     */
+    public void imprimirInfo(){
+        System.out.println("TIEMPO TRABAJO DIARIO: "+tiempoDiario);
+        System.out.println("TRABAJO DIARIO: "+tareasDiarias);
+        System.out.println("TIEMPO DE CICLO: "+tiempoCiclo);
+        System.out.println("CANTIDAD ESTACIONES: "+cantEstaciones);
+    }
+
+    /*
+    Método para imprimir todas las tareas de la lista ensamblaje
+    */
     public void imprimir(){
-            System.out.println("------- TIEMPO TRABAJO DIARIO: "+tiempoDiario +"    ---     TRABAJO DIARIO: "+tareasDiarias+
-                                            "   ------- TIEMPO DE CICLO: "+tiempoCiclo +"    ---     CANTIDAD ESTACIONES: "+cantEstaciones);
-            for(int i=0 ; i<ensamblaje.size() ; i++){
-                    String preced = "";
-                    for(int e=0 ; e<ensamblaje.get(i).getPrecedentes().size() ; e++){
-                            preced += "  "+ensamblaje.get(i).getPrecedentes().get(e);
-                    }
-                    System.out.println(ensamblaje.get(i).getNombre()+"    "+ensamblaje.get(i).getTiempo()+"    "+preced);
+        System.out.println("TIEMPO TRABAJO DIARIO: "+tiempoDiario);
+        System.out.println("TRABAJO DIARIO: "+tareasDiarias);
+        System.out.println("TIEMPO DE CICLO: "+tiempoCiclo);
+        System.out.println("CANTIDAD ESTACIONES: "+cantEstaciones);
+        for(int i=0 ; i<ensamblaje.size() ; i++){
+            String preced = "";
+            for(int e=0 ; e<ensamblaje.get(i).getPrecedentes().size() ; e++){
+                preced += "  "+ensamblaje.get(i).getPrecedentes().get(e);
             }
+            System.out.println(ensamblaje.get(i).getNombre()+"    "+ensamblaje.get(i).getTiempo()+"    "+preced);
+        }
     }
     
     /*
     Método para imprimir las estaciones y sus tares.
     */
     public void imprimirEstaciones(){
-            for(int i=0 ; i<this.estaciones.size() ; i++){
-                    System.out.println("\n\n------------------- "+this.estaciones.get(i).getNombre()+" ------------------- "+this.estaciones.get(i).getTiempoSobrante() + "-------------------");
-                    for(int e=0 ; e<this.estaciones.get(i).getTareas().size() ; e++){
-                                    System.out.println(this.estaciones.get(i).getTareas().get(e));
-                    }
+        for(int i=0 ; i<this.estaciones.size() ; i++){
+            System.out.println("\n"+this.estaciones.get(i).getNombre()+" ------------------- ");
+            System.out.println("Tiempo sobrante de la estacion: "+this.estaciones.get(i).getTiempoSobrante());
+            for(int e=0 ; e<this.estaciones.get(i).getTareas().size() ; e++){
+                System.out.print(this.estaciones.get(i).getTareas().get(e)+"\t");
             }
+            System.out.println("\n");
+        }
     }
     
     public boolean allUsed(){
-            for(int i=0 ; i<ensamblaje.size() ; i++)
-                    if(!ensamblaje.get(i).isIsEstacion())
-                            return false;            
-            return true;
+        for(int i=0 ; i<ensamblaje.size() ; i++)
+            if(!ensamblaje.get(i).isIsEstacion())
+                return false;            
+        return true;
     }
 
-        public ArrayList<Estacion> getEstaciones() {
-                return estaciones;
-        }
+    public ArrayList<Estacion> getEstaciones() {
+        return estaciones;
+    }
 
-        public void setEstaciones(ArrayList<Estacion> estaciones) {
-                this.estaciones = estaciones;
-        }
-    
-    
+    public void setEstaciones(ArrayList<Estacion> estaciones) {
+        this.estaciones = estaciones;
+    } 
 }
