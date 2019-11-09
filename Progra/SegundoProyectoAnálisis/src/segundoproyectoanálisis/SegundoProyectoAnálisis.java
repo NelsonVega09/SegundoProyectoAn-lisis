@@ -8,8 +8,10 @@ package segundoproyectoanálisis;
 
 import Ensamblaje.Dinamico;
 import Ensamblaje.Ensamblaje;
+import Ensamblaje.Genetico;
 import Tarea.Tarea;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class SegundoProyectoAnálisis {
 
@@ -29,50 +31,115 @@ public class SegundoProyectoAnálisis {
     public static Dinamico dinamico4 = new Dinamico(ensamblaje4);
     public static Dinamico dinamico5 = new Dinamico(ensamblaje5);
     public static Dinamico dinamico6 = new Dinamico(ensamblaje6);
+    public static Genetico genetico1 = new Genetico(ensamblaje1);
+    public static Genetico genetico2 = new Genetico(ensamblaje2);
+    public static Genetico genetico3 = new Genetico(ensamblaje3);
+    public static Genetico genetico4 = new Genetico(ensamblaje4);
+    public static Genetico genetico5 = new Genetico(ensamblaje5);
+    public static Genetico genetico6 = new Genetico(ensamblaje6);
 
     public static void main(String[] args) {
-        
         crearEnsamblaje1();
         ensamblaje1.cantidadEstaciones();
-        dinamico1.lineaEnsamblajeDinamica();
-        
         crearEnsamblaje2();
         ensamblaje2.cantidadEstaciones();
-        dinamico2.lineaEnsamblajeDinamica();
-        
         crearEnsamblaje3();
         ensamblaje3.cantidadEstaciones();
-        dinamico3.lineaEnsamblajeDinamica();
-        
         crearEnsamblaje4();
         ensamblaje4.cantidadEstaciones();
-        dinamico4.lineaEnsamblajeDinamica();
-        
         //ensamblaje5.crearTareas(120);
         //ensamblaje5.cantidadEstaciones();
-       
         //ensamblaje6.crearTareas(1200);
         //ensamblaje6.cantidadEstaciones();
         
-        System.out.println("\n\n------------------------------      10 TAREAS      ------------------------------------");
-        ensamblaje1.imprimir();
-        ensamblaje1.imprimirEstaciones();
-        System.out.println("\n\n------------------------------      20 TAREAS      ------------------------------------");
-        ensamblaje2.imprimir();
-        ensamblaje2.imprimirEstaciones();
-        System.out.println("\n\n------------------------------      30 TAREAS      ------------------------------------");
-        ensamblaje3.imprimir();
-        ensamblaje3.imprimirEstaciones();
-        System.out.println("\n\n------------------------------      60 TAREAS      ------------------------------------");
-        ensamblaje4.imprimir();
-        ensamblaje4.imprimirEstaciones();
-        //System.out.println("\n\n------------------------------      120 TAREAS      -----------------------------------");
-        //ensamblaje5.imprimir();
-        //System.out.println("\n\n-----------------------------      1200 TAREAS      -----------------------------------");
-        //ensamblaje6.imprimir();
+        while (true) {
+            System.out.println("Digite un numero segun la opcion que desee");
+            System.out.println("0.Salir");
+            System.out.println("1.Imprimir los ensamblajes");
+            System.out.println("2.Imprimir las estaciones dinamicas");
+            System.out.println("3.Imprimir las estaciones geneticas");
+            Scanner teclado = new Scanner(System.in);
+            int opcion = Integer.parseInt(teclado.nextLine());
+            
+            switch (opcion) {
+                case 0:
+                    return;
+                case 1:
+                    ensamblajes();
+                case 2:
+                    dinamico();
+                case 3:
+                    break;
+                default:
+                    System.out.println("Ingrese un numero valido"); 
+            }
+        }
+
+        
         
     }
+    
+    static void ensamblajes(){
+        System.out.println("**IMPRESION DE LOS ENSAMBLAJES");
+        System.out.println("------------------------------      10 TAREAS      ------------------------------------");
+        ensamblaje1.imprimirInfo();
+        ensamblaje1.imprimir();
+        System.out.println("------------------------------      20 TAREAS      ------------------------------------");
+        ensamblaje2.imprimirInfo();
+        ensamblaje2.imprimir();
+        System.out.println("------------------------------      30 TAREAS      ------------------------------------");
+        ensamblaje3.imprimirInfo();
+        ensamblaje3.imprimir();
+        System.out.println("------------------------------      60 TAREAS      ------------------------------------");
+        ensamblaje4.imprimirInfo();
+        ensamblaje4.imprimir();
+        //System.out.println("------------------------------      120 TAREAS      -----------------------------------");
+        //ensamblaje5.imprimirInfo();
+        //ensamblaje5.imprimir();
+        //System.out.println("-----------------------------      1200 TAREAS      -----------------------------------");
+        //ensamblaje5.imprimirInfo();        
+        //ensamblaje6.imprimir();
+    }
+    static void dinamico(){
+        System.out.println("**IMPRESION DE LAS ESTACIONES DINAMICAS");
+        System.out.println("------------------------------      10 TAREAS      ------------------------------------");
+        dinamico1.lineaEnsamblaje();
+        dinamico1.imprimirDatos();
+        ensamblaje1.imprimirEstaciones();
+        System.out.println("------------------------------      20 TAREAS      ------------------------------------");
+        dinamico2.lineaEnsamblaje();
+        dinamico2.imprimirDatos();
+        ensamblaje2.imprimirEstaciones();
+        System.out.println("------------------------------      30 TAREAS      ------------------------------------");
+        dinamico3.lineaEnsamblaje();
+        dinamico3.imprimirDatos();
+        ensamblaje3.imprimirEstaciones();
+        System.out.println("------------------------------      60 TAREAS      ------------------------------------");
+        dinamico4.lineaEnsamblaje();
+        dinamico4.imprimirDatos();
+        ensamblaje4.imprimirEstaciones();  
+    } 
+    static void genetico(){
+        System.out.println("**IMPRESION DE LAS ESTACIONES GENETICAS");
+        System.out.println("------------------------------      10 TAREAS      ------------------------------------");
+        genetico1.lineaEnsamblaje();
+        genetico1.imprimirDatos();
+        ensamblaje1.imprimirEstaciones();
+        System.out.println("------------------------------      20 TAREAS      ------------------------------------");
+        genetico2.lineaEnsamblaje();
+        genetico2.imprimirDatos();
+        ensamblaje2.imprimirEstaciones();
+        System.out.println("------------------------------      30 TAREAS      ------------------------------------");
+        genetico3.lineaEnsamblaje();
+        genetico3.imprimirDatos();
+        ensamblaje3.imprimirEstaciones();
+        System.out.println("------------------------------      60 TAREAS      ------------------------------------");
+        genetico4.lineaEnsamblaje();
+        genetico4.imprimirDatos();
+        ensamblaje4.imprimirEstaciones();  
+    } 
 
+    
     public static void crearEnsamblaje1(){            
         ArrayList<String> precedentes1 = new ArrayList();
         ArrayList<String> precedentes2 = new ArrayList();
