@@ -31,12 +31,12 @@ public class SegundoProyectoAnálisis {
     public static Dinamico dinamico4 = new Dinamico(ensamblaje4);
     public static Dinamico dinamico5 = new Dinamico(ensamblaje5);
     public static Dinamico dinamico6 = new Dinamico(ensamblaje6);
-    public static Genetico genetico1 = new Genetico(ensamblaje1);
-    public static Genetico genetico2 = new Genetico(ensamblaje2);
-    public static Genetico genetico3 = new Genetico(ensamblaje3);
-    public static Genetico genetico4 = new Genetico(ensamblaje4);
-    public static Genetico genetico5 = new Genetico(ensamblaje5);
-    public static Genetico genetico6 = new Genetico(ensamblaje6);
+    public static Genetico genetico1;
+    public static Genetico genetico2;
+    public static Genetico genetico3;
+    public static Genetico genetico4;
+    public static Genetico genetico5;
+    public static Genetico genetico6;
 
     public static void main(String[] args) {
         crearEnsamblaje1();
@@ -47,12 +47,27 @@ public class SegundoProyectoAnálisis {
         ensamblaje3.cantidadEstaciones();
         crearEnsamblaje4();
         ensamblaje4.cantidadEstaciones();
+        
+        genetico1 = new Genetico(ensamblaje1);
+        genetico2 = new Genetico(ensamblaje2);
+        genetico3 = new Genetico(ensamblaje3);
+        genetico4 = new Genetico(ensamblaje4);
+        genetico5 = new Genetico(ensamblaje5);
+        genetico6 = new Genetico(ensamblaje6);
+    
+        genetico1.crearPadres();
+        genetico1.imprimirPadres();
+       
+
+        genetico1.crearHijos();
+        genetico1.imprimirHijos();
+
         //ensamblaje5.crearTareas(120);
         //ensamblaje5.cantidadEstaciones();
         //ensamblaje6.crearTareas(1200);
         //ensamblaje6.cantidadEstaciones();
         
-        while (true) {
+        /*while (true) {
             System.out.println("Digite un numero segun la opcion que desee");
             System.out.println("0.Salir");
             System.out.println("1.Imprimir los ensamblajes");
@@ -66,14 +81,16 @@ public class SegundoProyectoAnálisis {
                     return;
                 case 1:
                     ensamblajes();
+                    break;
                 case 2:
                     dinamico();
+                    break;
                 case 3:
                     break;
                 default:
                     System.out.println("Ingrese un numero valido"); 
             }
-        }
+        }*/
 
         
         

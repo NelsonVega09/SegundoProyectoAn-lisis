@@ -130,8 +130,7 @@ public class Ensamblaje {
             for (int i=0 ; i<ensamblaje.size() ; i++){
                     tiempoTotal += ensamblaje.get(i).getTiempo();
             }
-           this.cantEstaciones = (
-                   tiempoTotal / tiempoCiclo)+1;
+           this.cantEstaciones = (tiempoTotal / tiempoCiclo)+1;
             for(int i=0; i<this.cantEstaciones ; i++){
                     estaciones.add(new Estacion("Estacion"+String.valueOf(i+1),this.tiempoCiclo));
             }
@@ -233,5 +232,12 @@ public class Ensamblaje {
 
     public void setEstaciones(ArrayList<Estacion> estaciones) {
         this.estaciones = estaciones;
-    } 
+    }
+    
+    public void resetearSolucion(){
+            this.estaciones.clear();
+            for(Tarea x : ensamblaje){
+                    x.setIsEstacion(false);
+            }
+    }
 }

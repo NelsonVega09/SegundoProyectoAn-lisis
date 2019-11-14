@@ -21,6 +21,10 @@ public class Estacion {
         public void setTarea(String tareas) {
                 this.tareas.add(tareas);
         }
+        
+        public void setTareas(ArrayList<String> tareas) {
+                this.tareas = tareas;
+        }
 
         public int getTiempoSobrante() {
                 return tiempoSobrante;
