@@ -236,16 +236,6 @@ public class Genetico {
                                 }
                         }
                 }
-                ArrayList<Integer> estacionesV = new ArrayList<>();
-                int x=0;
-                for(Estacion estacion : hijoMutado.getHijo()){
-                        if(estacion.getTareas().isEmpty())
-                                estacionesV.add(x);
-                        x++;
-                }
-                for(Integer z : estacionesV){
-                        hijoMutado.getHijo().remove(z);
-                }
                 this.prodigio = hijoMutado;
         }
         
@@ -335,6 +325,8 @@ public class Genetico {
         public void imprimirProdigio(){
                 System.out.println("-----------------------------------------------  Genético  -----------------------------------------------");
                 for(Estacion estacion : this.prodigio.getHijo()){
+                        if(estacion.getTareas().isEmpty())
+                                return;
                         System.out.println("*********************   "+estacion.getNombre() +"   *********************   Tiempo "+estacion.getTiempoSobrante()+"   *********************");
                         String tareas = "";
                         for(String nombre : estacion.getTareas()){
