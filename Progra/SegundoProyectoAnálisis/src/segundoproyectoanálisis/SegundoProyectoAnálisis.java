@@ -55,12 +55,17 @@ public class SegundoProyectoAnálisis {
         genetico5 = new Genetico(ensamblaje5);
         genetico6 = new Genetico(ensamblaje6);
     
+        dinamico1.lineaEnsamblaje();
+        dinamico1.imprimirDatos();
+        ensamblaje1.imprimirEstaciones();
+        
         genetico1.crearPadres();
-        genetico1.imprimirPadres();
-       
-
-        genetico1.crearHijos();
-        genetico1.imprimirHijos();
+        genetico1.imprimirProdigio();
+        
+        //genetico1.crearPadres();
+        //genetico1.imprimirPadres();
+        //genetico1.crearHijos();
+        //genetico1.imprimirHijos();
 
         //ensamblaje5.crearTareas(120);
         //ensamblaje5.cantidadEstaciones();

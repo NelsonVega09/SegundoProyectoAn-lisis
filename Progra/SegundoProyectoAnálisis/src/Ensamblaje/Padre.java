@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class Padre {
         private ArrayList<Estacion> padre = new ArrayList<>();
         private String nombre;
+        private int sobrante = 0;
 
         public Padre(ArrayList<Estacion> padre, String nombre) {
                 this.padre.addAll(padre);
@@ -35,9 +36,21 @@ public class Padre {
         public void setNombre(String nombre) {
                 this.nombre = nombre;
         }
+
+        public int getSobrante() {
+                return sobrante;
+        }
+
+        public void setSobrante(int sobrante) {
+                this.sobrante = sobrante;
+        }
         
-        
-        
-        
+        public void sobranteT(){
+                int cant = 0;
+                for(Estacion estacion : this.padre){
+                        cant += estacion.getTiempoSobrante();
+                }
+                this.sobrante = cant;
+        }
         
 }

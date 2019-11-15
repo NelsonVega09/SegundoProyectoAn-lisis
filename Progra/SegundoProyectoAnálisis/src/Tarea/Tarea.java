@@ -10,6 +10,7 @@ public class Tarea {
     private ArrayList<String> precedentes;
     private final ArrayList<String> allPrecedentes;
     private boolean isEstacion = false;
+    private boolean isMutado = false;
     private String estacion = "";
 
         public Tarea(String nombre, int tiempo, ArrayList<String> precedentes,ArrayList<String> allPrecedentes) {
@@ -62,6 +63,16 @@ public class Tarea {
 
         public void setEstacion(String estacion) {
                 this.estacion = estacion;
-        }      
+        }
+
+        public boolean isIsMutado() {
+                return isMutado;
+        }
+
+        public void setIsMutado(boolean isMutado) {
+                this.isMutado = isMutado;
+        }
+        
+        
                 
 }

@@ -7,6 +7,7 @@ public class Hijo {
         private String nombreP1;
         private String nombreP2;
         private String nombre;
+        private int sobrante = 0;
         private ArrayList<Estacion> hijo = new ArrayList<>();
 
         public Hijo(String nombre, String nombreP1, String nombreP2,ArrayList<Estacion> hijos) {
@@ -46,5 +47,21 @@ public class Hijo {
 
         public void setHijo(ArrayList<Estacion> hijos) {
                 this.hijo = hijos;
+        }
+        
+        public int getSobrante() {
+                return sobrante;
+        }
+
+        public void setSobrante(int sobrante) {
+                this.sobrante = sobrante;
+        }
+        
+        public void sobranteT(){
+                int cant = 0;
+                for(Estacion estacion : this.hijo){
+                        cant += estacion.getTiempoSobrante();
+                }
+                this.sobrante = cant;
         }
 }
