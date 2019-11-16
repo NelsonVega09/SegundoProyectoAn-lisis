@@ -180,16 +180,6 @@ public class Ensamblaje {
         /*
     Método para imprimir todas las tareas de la lista ensamblaje
          */
-        public void imprimirInfo() {
-                System.out.println("TIEMPO TRABAJO DIARIO: " + tiempoDiario);
-                System.out.println("TRABAJO DIARIO: " + tareasDiarias);
-                System.out.println("TIEMPO DE CICLO: " + tiempoCiclo);
-                System.out.println("CANTIDAD ESTACIONES: " + cantEstaciones);
-        }
-
-        /*
-    Método para imprimir todas las tareas de la lista ensamblaje
-         */
         public void imprimir() {
                 System.out.println("TIEMPO TRABAJO DIARIO: " + tiempoDiario);
                 System.out.println("TRABAJO DIARIO: " + tareasDiarias);
