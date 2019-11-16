@@ -55,12 +55,31 @@ public class SegundoProyectoAnálisis {
         genetico5 = new Genetico(ensamblaje5);
         genetico6 = new Genetico(ensamblaje6);
     
-        dinamico1.lineaEnsamblaje();
-        dinamico1.imprimirDatos();
-        ensamblaje1.imprimirEstaciones();
+        //dinamico1.lineaEnsamblaje();
+        //dinamico1.imprimirDatos();
+        //ensamblaje1.imprimirEstaciones();
         
-        genetico1.crearPadres();
-        genetico1.imprimirProdigio();
+        //genetico1.generarGenetico();
+        //genetico1.imprimirProdigio();
+        
+
+        dinamico2.lineaEnsamblaje();
+        dinamico2.imprimirDatos();
+        ensamblaje2.imprimirEstaciones();
+        
+        genetico2.crearPadres();
+        genetico2.imprimirProdigio();
+        //genetico2.imprimirProdigio();
+        
+        //dinamico3.lineaEnsamblaje();
+        //dinamico3.imprimirDatos();
+        //ensamblaje3.imprimirEstaciones();
+        //genetico3.crearPadres();
+        //genetico3.imprimirProdigio();
+        
+        //genetico2.crearPadres();
+        //genetico2.imprimirProdigio();
+        
         
         //genetico1.crearPadres();
         //genetico1.imprimirPadres();

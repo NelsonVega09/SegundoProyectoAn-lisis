@@ -52,6 +52,7 @@ public class Dinamico {
                         asig++;
                         estacionT.setTiempoSobrante(tiempo);
                 }
+                eficiencia();
         }
 
         public boolean precedentesUsados(Tarea tarea) {
@@ -89,5 +90,16 @@ public class Dinamico {
                 System.out.println("Comparaciones: " + comp);
                 System.out.println("Asignaciones: " + asig);
                 System.out.println("Lineas de codigo: " + lin);
+        }
+
+        public void eficiencia() {
+                float T = 0;
+                float Nr = ensamblaje.getCantEstaciones();
+                float C = ensamblaje.getTiempoCiclo();
+                for (Tarea tarea : ensamblaje.getLineaEnsamblaje()) {
+                        T += tarea.getTiempo();
+                }                
+                float eficiencia = ((float)(T / (Nr * C)))*100;
+                ensamblaje.setEficiencia(eficiencia);
         }
 }

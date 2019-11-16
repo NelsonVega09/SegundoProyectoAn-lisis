@@ -17,6 +17,7 @@ public class Genetico {
         private ArrayList<Padre> listaPadres = new ArrayList();
         private ArrayList<Hijo> listaHijos = new ArrayList<>();
         private Hijo prodigio;
+        public float eficiencia = 0;
                
         int comp;
         int asig;
@@ -109,6 +110,7 @@ public class Genetico {
     }
             
         public void imprimirPadres(){
+                System.out.println("lista   "+listaPadres.size());
                     for(Padre x : listaPadres){
                             System.out.println("----------------------------------- "+x.getNombre()+" -----------------------------------\n");
                             for(int i=0 ; i<x.getPadre().size() ; i++){
@@ -145,7 +147,7 @@ public class Genetico {
                             Padre padre = new Padre(listaEstaciones,"Padre "+ (i+1));
                             listaPadres.add(padre);
                     }
-                    crearHijos();
+                   crearHijos();
             }
            
         public void limpiarListas(){
@@ -157,7 +159,6 @@ public class Genetico {
                     listaEstaciones.clear();
                     listaPosiblesTareas.clear();
                     crearEstaciones(ensamblaje);
-                    
             }
            
         public void crearHijos(){
@@ -178,22 +179,77 @@ public class Genetico {
             }
 
         public Hijo crearHijo(Padre padre1n, Padre padre2n){
-                Padre padre1 = new Padre(padre1n.getPadre(), padre1n.getNombre() );
-                Padre padre2 = new Padre(padre2n.getPadre(), padre2n.getNombre() );
+                ArrayList<Estacion> esta1 = new ArrayList<>();
+                ArrayList<Estacion> esta2 = new ArrayList<>();
+                for(Estacion estacion : padre1n.getPadre()){
+                        ArrayList<String> tareas = new ArrayList<>();
+                        tareas.addAll(estacion.getTareas());
+                        Estacion nueva = new Estacion(estacion.getNombre(),estacion.getTiempoSobrante());
+                        nueva.setTareas(tareas);
+                        esta1.add(nueva);
+                }
+                for(Estacion estacion : padre2n.getPadre()){
+                        ArrayList<String> tareas = new ArrayList<>();
+                        tareas.addAll(estacion.getTareas());
+                        Estacion nueva = new Estacion(estacion.getNombre(),estacion.getTiempoSobrante());
+                        nueva.setTareas(tareas);
+                        esta2.add(nueva);
+                }
+                Padre padre1 = new Padre(esta1, padre1n.getNombre());
+                Padre padre2 = new Padre(esta2, padre2n.getNombre());
+                ArrayList<String> noUsadosTemp = new ArrayList<>();
                 ArrayList<String> usados = new ArrayList<>();
                 ArrayList<Estacion> estacionesH = new ArrayList<>();
                 for(Estacion estacion : padre1.getPadre()){
                         Estacion estacionN = new Estacion(estacion.getNombre(),ensamblaje.getTiempoCiclo());
                         estacionesH.add(estacionN);
                 }
-                Hijo hijo = new Hijo("",padre1.getNombre(),padre2.getNombre(),estacionesH);
                 
-                for(int i=0 ; i<padre1.getPadre().size() ; i++){
+                Hijo hijo = new Hijo("",padre1.getNombre(),padre2.getNombre(),estacionesH);
+                for(int i=0 ; i<hijo.getHijo().size() ; i++){
+                        
+                        for(String tarea : noUsadosTemp){
+                                if(hijo.getHijo().get(i).getTiempoSobrante() >= ensamblaje.getTarea(tarea).getTiempo()){
+                                        hijo.getHijo().get(i).getTareas().add(tarea);
+                                        hijo.getHijo().get(i).setTiempoSobrante(hijo.getHijo().get(i).getTiempoSobrante()-ensamblaje.getTarea(tarea).getTiempo());
+                                        usados.add(tarea);
+                                }
+                        }
+                        
+                        for(String tarea : usados){
+                                if(noUsadosTemp.contains(tarea)){
+                                        noUsadosTemp.remove(tarea);
+                                }
+                        }
+                        
+                        
+                        for(int t = 0; t < padre1.getPadre().get(i).getTareas().size(); t++){
+                                if(usados.contains(padre1.getPadre().get(i).getTareas().get(t))){
+                                        int tiempoSobrante = padre1.getPadre().get(i).getTiempoSobrante() + ensamblaje.getTarea(padre1.getPadre().get(i).getTareas().get(t)).getTiempo();
+                                        padre1.getPadre().get(i).setTiempoSobrante(tiempoSobrante);
+                                        padre1.getPadre().get(i).getTareas().remove(padre1.getPadre().get(i).getTareas().get(t));
+                                }
+                        }
+                        
+                        for(int t = 0; t < padre2.getPadre().get(i).getTareas().size(); t++){
+                                if(usados.contains(padre2.getPadre().get(i).getTareas().get(t))){
+                                        int tiempoSobrante = padre2.getPadre().get(i).getTiempoSobrante() + ensamblaje.getTarea(padre2.getPadre().get(i).getTareas().get(t)).getTiempo();
+                                        padre2.getPadre().get(i).setTiempoSobrante(tiempoSobrante);
+                                        padre2.getPadre().get(i).getTareas().remove(padre2.getPadre().get(i).getTareas().get(t));
+
+                                }
+                        }
                         if(padre1.getPadre().get(i).getTiempoSobrante() >= padre2.getPadre().get(i).getTiempoSobrante()){
                                 for(String tarea : padre1.getPadre().get(i).getTareas()){
                                         if(!usados.contains(ensamblaje.getTarea(tarea))){
                                                 hijo.getHijo().get(i).getTareas().add(tarea);
                                                 hijo.getHijo().get(i).setTiempoSobrante(hijo.getHijo().get(i).getTiempoSobrante() - ensamblaje.getTarea(tarea).getTiempo());
+                                                usados.add(tarea);
+                                        }
+                                }
+                                for(String tarea : padre2.getPadre().get(i).getTareas()){
+                                        if(!usados.contains(ensamblaje.getTarea(tarea))){
+                                                noUsadosTemp.add(tarea);
                                         }
                                 }
                         }else{
@@ -201,8 +257,14 @@ public class Genetico {
                                         if(!usados.contains(ensamblaje.getTarea(tarea))){
                                                 hijo.getHijo().get(i).getTareas().add(tarea);
                                                 hijo.getHijo().get(i).setTiempoSobrante(hijo.getHijo().get(i).getTiempoSobrante() - ensamblaje.getTarea(tarea).getTiempo());
+                                                usados.add(tarea);
                                         }
-                                } 
+                                }
+                                for(String tarea : padre1.getPadre().get(i).getTareas()){
+                                        if(!usados.contains(ensamblaje.getTarea(tarea))){
+                                                noUsadosTemp.add(tarea);
+                                        }
+                                }
                         }
                 }
                 return hijo;                
@@ -237,6 +299,7 @@ public class Genetico {
                         }
                 }
                 this.prodigio = hijoMutado;
+                eficiencia();
         }
         
         public Hijo crearHijo2(Padre padre1n, Padre padre2n){
@@ -274,8 +337,6 @@ public class Genetico {
                                 usados.add(estacionT.getTareas().get(i));
                                 padre1.getPadre().get(e).getTareas().add(estacionT.getTareas().get(i));                                
                 }
-                        
-                
                         
                 }
                 
@@ -323,7 +384,7 @@ public class Genetico {
         }
         
         public void imprimirProdigio(){
-                System.out.println("-----------------------------------------------  Genético  -----------------------------------------------");
+                System.out.println("--------------------------------  Genético  -------------------------------- Eficiencia "+this.eficiencia+" --------------------------------");
                 for(Estacion estacion : this.prodigio.getHijo()){
                         if(estacion.getTareas().isEmpty())
                                 return;
@@ -335,4 +396,21 @@ public class Genetico {
                         System.out.println(tareas);
                 }
         }
+        
+        public void eficiencia(){
+                float T = 0;
+                float Nr = 0;
+                float C = ensamblaje.getTiempoCiclo();
+                for(Estacion estacion : prodigio.getHijo()){
+                        if(!estacion.getTareas().isEmpty())
+                                Nr++;
+                }
+                for(Tarea tarea : ensamblaje.getLineaEnsamblaje()){
+                        T += tarea.getTiempo();
+                }                
+                this.eficiencia = ((float)(T / (Nr * C)))*100;
+                System.out.println(C+"    "+Nr+"   "+"    "+C);
+                System.out.println(this.eficiencia);
+        }
+        
 }
