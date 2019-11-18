@@ -124,6 +124,6 @@ public class Dinamico {
     public void imprimirDatos() {
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
-        System.out.println("Memoria Utilizada: " + this.memoria);
+        System.out.println("Memoria Utilizada: " + (this.memoria/1000) +" KB");
     }
 }

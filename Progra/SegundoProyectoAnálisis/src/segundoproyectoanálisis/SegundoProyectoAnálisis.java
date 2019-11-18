@@ -52,10 +52,10 @@ public class SegundoProyectoAnálisis {
         ensamblaje3.cantidadEstaciones();
         crearEnsamblaje4();
         ensamblaje4.cantidadEstaciones();
-        //ensamblaje5.crearTareas(120);
-        //ensamblaje5.cantidadEstaciones();
-        //ensamblaje6.crearTareas(1200);
-        //ensamblaje6.cantidadEstaciones();
+        ensamblaje5.crearTareas(120);
+        ensamblaje5.cantidadEstaciones();
+        ensamblaje6.crearTareas(1200);
+        ensamblaje6.cantidadEstaciones();
 
         genetico1 = new Genetico(ensamblaje1);
         genetico2 = new Genetico(ensamblaje2);
@@ -120,66 +120,30 @@ public class SegundoProyectoAnálisis {
         System.out.println("Corriendo el algortimo dinamico...");
         long beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico1.lineaEnsamblaje();
+        dinamico2.lineaEnsamblaje();
+        dinamico3.lineaEnsamblaje();
+        dinamico4.lineaEnsamblaje();
+        dinamico5.lineaEnsamblaje();
+        dinamico6.lineaEnsamblaje();
+        System.out.println("Corriendo el algortimo genetico...");
+        genetico1.crearPadres();
+        genetico2.crearPadres();
+        genetico3.crearPadres();
+        genetico4.crearPadres();
+        genetico5.crearPadres();
+        genetico6.crearPadres();
         long afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico1.memoria = afterUsedMem - beforeUsedMem;
-
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        dinamico2.lineaEnsamblaje();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico2.memoria = afterUsedMem - beforeUsedMem;
-        
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        dinamico3.lineaEnsamblaje();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico3.memoria = afterUsedMem - beforeUsedMem;
-        
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        dinamico4.lineaEnsamblaje();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico4.memoria = afterUsedMem - beforeUsedMem;
-        
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        dinamico5.lineaEnsamblaje();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico5.memoria = afterUsedMem - beforeUsedMem;
-        
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        dinamico6.lineaEnsamblaje();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico6.memoria = afterUsedMem - beforeUsedMem;
-
-        
-        System.out.println("Corriendo el algortimo genetico...");
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        genetico1.crearPadres();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         genetico1.memoria = afterUsedMem - beforeUsedMem;
-        
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        genetico2.crearPadres();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         genetico2.memoria = afterUsedMem - beforeUsedMem;
-        
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        genetico3.crearPadres();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         genetico3.memoria = afterUsedMem - beforeUsedMem;
-        
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        genetico4.crearPadres();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         genetico4.memoria = afterUsedMem - beforeUsedMem;
-        
-        
-        
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        genetico5.crearPadres();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        genetico5.memoria = afterUsedMem - beforeUsedMem;
-        
-        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
-        genetico6.crearPadres();
-        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico5.memoria = afterUsedMem - beforeUsedMem;   
         genetico6.memoria = afterUsedMem - beforeUsedMem;
     }
 
