@@ -1,11 +1,12 @@
-package Ensamblaje;
+package Genético;
 
+import Ensamblaje.Ensamblaje;
+import Ensamblaje.Estacion;
 import Tarea.Tarea;
 import java.util.ArrayList;
 import java.util.Comparator;
 import static segundoproyectoanálisis.SegundoProyectoAnálisis.asig;
 import static segundoproyectoanálisis.SegundoProyectoAnálisis.comp;
-import static segundoproyectoanálisis.SegundoProyectoAnálisis.mem;
 
 /**
  * Clase del Algoritmo dinamico contiene las variables globales utilizadas para
@@ -21,9 +22,9 @@ public class Genetico {
     private ArrayList<Hijo> listaHijos = new ArrayList<>();
     private Hijo prodigio;
     private float eficiencia = 0;
-    private int memoria = 0;
     private int asignaciones = 0;
     private int comparaciones = 0;
+    public long memoria = 0;
 
     public Genetico(Ensamblaje ensamblaje) {
         asig++;
@@ -37,6 +38,10 @@ public class Genetico {
         crearEstaciones(ensamblaje);
     }
 
+    /**
+     * Función que se encarga de realizar el balanceo de la linea de ensmablaje, 
+     * esta es generada aleatoriamente para que cada padre sea diferente al anterior.
+     */
     public void lineaEnsamblaje() {
         buscarPosibles();
         asig += 2;
@@ -92,6 +97,10 @@ public class Genetico {
 
     }
 
+    /**
+     * Función que se encarga de devolver true si todos los presendente de una tarea 
+     * se encuntra utilizado y false si falta aunque sea uno.
+     */
     public boolean precedentesUsados(Tarea tarea) {
         comp++;
         asig++;
@@ -105,6 +114,11 @@ public class Genetico {
         return true;
     }
 
+    
+    /**
+     * Función que se encarga de buscar las posibles tareas que se 
+     * pueden utilizar para introducirlas en la estacion
+     */
     public void buscarPosibles() {
         asig++;
         comp++;
@@ -113,13 +127,17 @@ public class Genetico {
             asig++;
             if ((precedentesUsados(listaTareas.get(i)))
                     && (!listaTareas.get(i).isIsEstacion())
-                    && (!listaPosiblesTareas.contains(listaTareas.get(i)))) {//------------------------------------
+                    && (!listaPosiblesTareas.contains(listaTareas.get(i)))) {
                 listaPosiblesTareas.add(listaTareas.get(i));
                 asig++;
             }
         }
     }
 
+    /**
+     * Función que se encarga de generar las estaciones de una linea de ensamblaje,
+     * cada linea de ensamblaje tiene distintas estaciones y estan se determinan a partir de una formula
+     */
     public void crearEstaciones(Ensamblaje ensamblaje) {
         asig += 2;
         comp++;
@@ -131,6 +149,10 @@ public class Genetico {
         }
     }
 
+    
+    /**
+     * Función que se encarga de imprimir los padres del algoritmo genético
+     */
     public void imprimirPadres() {
         
         System.out.println("lista   " + listaPadres.size());
@@ -148,6 +170,10 @@ public class Genetico {
         }
     }
 
+    
+    /**
+     * Función que se encarga de imprimir los hijos proveniente del cruce de los padres
+     */
     public void imprimirHijos() {
         for (Hijo x : listaHijos) {
             System.out.println("----------------------------------- " + x.getNombre() + " -----------------------------------\n");
@@ -163,6 +189,10 @@ public class Genetico {
         }
     }
 
+    
+    /**
+     * Función que se encarga de crear 5 padres llamando a LineaEnsamblaje y limpiando las listas
+     */
     public void crearPadres() {
         comp=1;
         asig=1;
@@ -178,6 +208,10 @@ public class Genetico {
         crearHijos();
     }
 
+    
+    /**
+     * Función que se encarga de limpiar las listas
+     */
     public void limpiarListas() {
         asig += 5;
         comp++;
@@ -197,6 +231,10 @@ public class Genetico {
         crearEstaciones(ensamblaje);
     }
 
+    
+    /**
+     * Función que se encarga de crear los hijos a partir de los tres mejores padres
+     */
     public void crearHijos() {
         asig += 12;
         ArrayList<Padre> padres = fitnessPadre(this.listaPadres);
@@ -214,6 +252,10 @@ public class Genetico {
         mutacion(mejorHijo);
     }
 
+    
+    /**
+     * Función que se encarga de crear un hijo a partir de dos padres
+     */
     public Hijo crearHijo(Padre padre1n, Padre padre2n) {
         asig += 12;
         ArrayList<Estacion> esta1 = new ArrayList<>();
@@ -339,6 +381,12 @@ public class Genetico {
         return hijo;
     }
 
+    
+    /**
+     * Función que se encarga de mutar un hijo, los hijos tienen muchas estaciones con el proposito de 
+     * aumentar la información genética y es por esto que la mutación se encarga de aliminar todas las estaciones
+     * que se consideren innecesarias.
+     */
     public void mutacion(Hijo hijo) {
         asig += 10;
         comp += 3;
@@ -385,11 +433,13 @@ public class Genetico {
         }
         this.prodigio = hijoMutado;
         eficiencia();
-        this.memoria += mem;
         this.asignaciones += asig;
         this.comparaciones += comp;
     }
 
+    /**
+     * Función que se encarga de recibir una lista de padres y devolver los mejores 3 padres
+     */
     public ArrayList<Padre> fitnessPadre(ArrayList<Padre> padres) {
         comp++;
         asig+=6;
@@ -406,6 +456,10 @@ public class Genetico {
         return nuevosP;
     }
 
+    
+    /**
+     * Función que se encarga de recibir una lista de hijos y retornar el mejor
+     */
     public Hijo fitnessHijo(ArrayList<Hijo> hijos) {
         comp++;
         asig+=2;
@@ -418,6 +472,11 @@ public class Genetico {
         return hijos.get(0);
     }
 
+    
+    /**
+     * Función que se encarga de devolver true si todos los presendente de una tarea 
+     * se encuntra utilizado y false si falta aunque sea uno. Esta funcion es unicamente utilizada para la mutación
+     */
     public boolean precedentesUsadosM(Tarea tarea) {
         comp++;
         asig++;
@@ -431,6 +490,10 @@ public class Genetico {
         return true;
     }
 
+    /**
+     * Función que se encarga de buscar las posibles tareas que se 
+     * pueden utilizar para introducirlas en la estacion. Esta funcion es unicamente utilizada para la mutación
+     */
     public void buscarPosiblesMutantes() {
         comp++;
         asig++;
@@ -446,6 +509,9 @@ public class Genetico {
         }
     }
 
+    /**
+     * Función que se encarga de imprimir el mejor hijo
+     */
     public void imprimirProdigio() {
         System.out.println("--------------------------------  Genético  -------------------------------- Eficiencia " + this.eficiencia + " --------------------------------");
         for (Estacion estacion : this.prodigio.getHijo()) {
@@ -461,6 +527,9 @@ public class Genetico {
         }
     }
 
+    /**
+     * Función que se encarga de averiguar la eficiencia de la linea de ensamblaje
+     */
     public void eficiencia() {
         float T = 0;
         float Nr = 0;
@@ -475,8 +544,13 @@ public class Genetico {
         }
         this.eficiencia = ((float) (T / (Nr * C))) * 100;
     }
+    
+    /**
+     * Función que se encarga de imprimir las mediciones del algoritmo genético
+     */
     public void imprimirDatos() {
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
+        System.out.println("Memoria Utilizada: " + this.memoria);
     }
 }

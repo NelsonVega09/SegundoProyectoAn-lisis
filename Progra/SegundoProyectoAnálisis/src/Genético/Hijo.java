@@ -1,7 +1,7 @@
-package Ensamblaje;
+package Genético;
 
+import Ensamblaje.Estacion;
 import java.util.ArrayList;
-import static segundoproyectoanálisis.SegundoProyectoAnálisis.mem;
 
 
 public class Hijo {
@@ -12,8 +12,6 @@ public class Hijo {
         private ArrayList<Estacion> hijo = new ArrayList<>();
 
         public Hijo(String nombre, String nombreP1, String nombreP2,ArrayList<Estacion> hijos) {
-                mem += 32;
-                mem += 0;
                 this.nombreP1 = nombreP1;
                 this.nombreP2 = nombreP2;
                 this.nombre = nombre;

@@ -1,14 +1,14 @@
-/*
- *Segundo proyecto programado de Analisis de algoritmos
- * Yuliana Rojas y Nelson Vega
- * Fecha inicio: Miercoles 23 de octubre
- * Fecha ultima modificacion: - - - - -
+/**
+ * Segundo proyecto programado de Analisis de algoritmos
+ * Yuliana Rojas Serrano  y Nelson Vega Soto
+ * Fecha inicio: 23 de octubre
+ * Fecha ultima modificacion: Domingo 17 de noviembre
  */
 package segundoproyectoanálisis;
 
-import Ensamblaje.Dinamico;
+import Dinámico.Dinamico;
 import Ensamblaje.Ensamblaje;
-import Ensamblaje.Genetico;
+import Genético.Genetico;
 import Tarea.Tarea;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,7 +19,7 @@ public class SegundoProyectoAnálisis {
     public static int comp = 0;
     public static int asig = 0;
     public static int lin = 0;
-    public static int mem = 0;
+    
 
     // --Crea los ensamblajes y sus respectivas respuestas
     public static Ensamblaje ensamblaje1 = new Ensamblaje(14400, 150);
@@ -118,22 +118,69 @@ public class SegundoProyectoAnálisis {
     
     private static void correrAlgortimos(){
         System.out.println("Corriendo el algortimo dinamico...");
+        long beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico1.lineaEnsamblaje();
+        long afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        dinamico1.memoria = afterUsedMem - beforeUsedMem;
+
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico2.lineaEnsamblaje();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        dinamico2.memoria = afterUsedMem - beforeUsedMem;
+        
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico3.lineaEnsamblaje();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        dinamico3.memoria = afterUsedMem - beforeUsedMem;
+        
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico4.lineaEnsamblaje();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        dinamico4.memoria = afterUsedMem - beforeUsedMem;
+        
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico5.lineaEnsamblaje();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        dinamico5.memoria = afterUsedMem - beforeUsedMem;
+        
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         dinamico6.lineaEnsamblaje();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        dinamico6.memoria = afterUsedMem - beforeUsedMem;
+
         
         System.out.println("Corriendo el algortimo genetico...");
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
         genetico1.crearPadres();
-        genetico2.crearPadres();
-        genetico3.crearPadres();
-        genetico4.crearPadres();
-        genetico4.crearPadres();
-        genetico5.crearPadres();
-        genetico6.crearPadres();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico1.memoria = afterUsedMem - beforeUsedMem;
         
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico2.crearPadres();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico2.memoria = afterUsedMem - beforeUsedMem;
+        
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico3.crearPadres();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico3.memoria = afterUsedMem - beforeUsedMem;
+        
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico4.crearPadres();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico4.memoria = afterUsedMem - beforeUsedMem;
+        
+        
+        
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico5.crearPadres();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico5.memoria = afterUsedMem - beforeUsedMem;
+        
+        beforeUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico6.crearPadres();
+        afterUsedMem=Runtime.getRuntime().totalMemory()-Runtime.getRuntime().freeMemory();
+        genetico6.memoria = afterUsedMem - beforeUsedMem;
     }
 
     private static void padres() {
@@ -225,7 +272,6 @@ public class SegundoProyectoAnálisis {
         System.out.println("------------------------------      1200 TAREAS      ------------------------------------");
         genetico6.imprimirProdigio();
     }
-    
     
     private static void medicionesDinamico() {
         System.out.println("**IMPRESION DE LAS MEDICIONES DINAMICAS");

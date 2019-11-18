@@ -102,8 +102,6 @@ public class Ensamblaje {
                                         }
                                         allPrecedentes.add(getTarea(posiblesPrecedentes.get(p)).getNombre());
                                         eliminaPosibles(getTarea(posiblesPrecedentes.get(p)));
-                                        //System.out.println(posiblesPrecedentes);
-                                        //System.out.println(allPrecedentes);        
                                 }
                         }
                 }
@@ -208,7 +206,10 @@ public class Ensamblaje {
                         System.out.println("\n");
                 }
         }
-
+        
+        /**
+         * Función que verifica si todos los precedentes de una tarea se encuentran usados en alguna estacion.
+         */
         public boolean allUsed() {
                 for (int i = 0; i < ensamblaje.size(); i++) {
                         if (!ensamblaje.get(i).isIsEstacion()) {
@@ -218,14 +219,26 @@ public class Ensamblaje {
                 return true;
         }
 
+        
+        /**
+         * Función que devuelve la lista de estaciones
+         */
         public ArrayList<Estacion> getEstaciones() {
                 return estaciones;
         }
 
+        
+        /**
+         * Función que recibe la ista de estaciones y la actualiza
+         */
         public void setEstaciones(ArrayList<Estacion> estaciones) {
                 this.estaciones = estaciones;
         }
 
+        
+        /**
+         * Función que limpia la infomarcion de todas las tareas (el booleano isEstacion)
+         */
         public void resetearSolucion() {
                 this.estaciones.clear();
                 for (Tarea x : ensamblaje) {
@@ -233,10 +246,17 @@ public class Ensamblaje {
                 }
         }
 
+        /**
+         * Función que devuelve la eficiencia del algoritmo dinamico 
+         */
         public float getEficiencia() {
                 return eficiencia;
         }
 
+        
+        /**
+         * Función que recibe y actualiza la eficiencia del agoritmo dinamico
+         */
         public void setEficiencia(float eficiencia) {
                 this.eficiencia = eficiencia;
         }

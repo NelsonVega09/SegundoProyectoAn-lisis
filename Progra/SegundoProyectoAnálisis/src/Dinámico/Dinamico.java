@@ -1,12 +1,13 @@
-package Ensamblaje;
+package Dinámico;
 
+import Ensamblaje.Ensamblaje;
+import Ensamblaje.Estacion;
 import Tarea.Tarea;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Collections;
 import static segundoproyectoanálisis.SegundoProyectoAnálisis.asig;
 import static segundoproyectoanálisis.SegundoProyectoAnálisis.comp;
-import static segundoproyectoanálisis.SegundoProyectoAnálisis.mem;
 
 /**
  * Clase del Algoritmo dinamico contiene las variables globales utilizadas para
@@ -19,16 +20,19 @@ public class Dinamico {
     ArrayList<Tarea> listaPosiblesTareas = new ArrayList();
     private int comparaciones = 0;
     private int asignaciones = 0;
-    private int memoria = 0;
+    public long memoria = 0;
     
     public Dinamico(Ensamblaje ensamblaje) {
         this.ensamblaje = ensamblaje;
         this.listaTareas = ensamblaje.getLineaEnsamblaje();
     }
 
+    /**
+     * Función que se encarga de realizar el balanceo de la linea de ensmablaje, 
+     * esta es generada aleatoriamente para que cada padre sea diferente al anterior.
+     */
     public void lineaEnsamblaje() {
         comp = 2;
-        mem = 0;
         asig = 1;
         buscarPosibles();
         for (int e = 0; e < ensamblaje.getEstaciones().size(); e++) {
@@ -59,9 +63,12 @@ public class Dinamico {
         eficiencia();
         this.asignaciones += asig;        
         this.comparaciones += comp;
-        this.memoria += mem;
     }
 
+    /**
+     * Función que se encarga de devolver true si todos los presendente de una tarea 
+     * se encuntra utilizado y false si falta aunque sea uno.
+     */
     public boolean precedentesUsados(Tarea tarea) {
         comp++;
         asig++;
@@ -74,7 +81,11 @@ public class Dinamico {
         }
         return true;
     }
-
+    
+    /**
+     * Función que se encarga de buscar las posibles tareas que se 
+     * pueden utilizar para introducirlas en la estacion
+     */
     public void buscarPosibles() {
         asig++;
         comp++;
@@ -93,6 +104,9 @@ public class Dinamico {
         Collections.reverse(listaPosiblesTareas);
     }
 
+    /**
+     * Función que se encarga de averiguar la eficiencia de la linea de ensamblaje
+     */
     public void eficiencia() {
         float T = 0;
         float Nr = ensamblaje.getCantEstaciones();
@@ -104,8 +118,12 @@ public class Dinamico {
         ensamblaje.setEficiencia(eficiencia);
     }
     
+    /**
+     * Función que se encarga de imprimir las mediciones del algoritmo genético
+     */
     public void imprimirDatos() {
         System.out.println("Asignaciones: " + asignaciones);
         System.out.println("Comparaciones: " + comparaciones);
+        System.out.println("Memoria Utilizada: " + this.memoria);
     }
 }
